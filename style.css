@@ -110,6 +110,7 @@ button:focus-visible {
   font-size: 1.5em;
   font-weight: 700;
   text-align: center;
+  height: 1rem;
 }
 
 .game-over {

@@ -85,6 +85,7 @@ const game = (() => {
       else {
         verdict.innerHTML = verdictTemplate(gameStatus.textContent);
         document.body.appendChild(verdict);
+        gameStatus.textContent = '';
       }
     }
   };
