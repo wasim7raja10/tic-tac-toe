@@ -1,6 +1,9 @@
+import verdictTemplate from './components/Verdict.js';
+
 const squares = Array.from(document.querySelectorAll('.square'));
 const gameStatus = document.querySelector('.game-status');
 const resetButton = document.querySelector('.restart');
+const verdict = document.createElement('div');
 
 const playerFactory = (name, symbol) => {
   const getName = () => name;
@@ -71,7 +74,7 @@ const game = (() => {
       gameBoard.board[index] = currentPlayer.getSymbol();
       gameBoard.render();
       if (checkWin()) {
-        gameStatus.textContent = `${currentPlayer.getName()} wins!`;
+        gameStatus.textContent = `${currentPlayer.getName()} win!`;
         gameOver = true;
       }
       if (checkDraw()) {
@@ -79,10 +82,15 @@ const game = (() => {
         gameOver = true;
       }
       if(!gameOver) changePlayer();
+      else {
+        verdict.innerHTML = verdictTemplate(gameStatus.textContent);
+        document.body.appendChild(verdict);
+      }
     }
   };
 
   const reset = () => {
+    document.body.removeChild(verdict);
     gameOver = false;
     gameBoard.reset();
     changePlayer();
