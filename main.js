@@ -38,6 +38,18 @@ const game = (() => {
     currentPlayer = currentPlayer === player1 ? player2 : player1;
     playerTurn.textContent = `${currentPlayer.getName()}'s turn`;
   };
+
+  const play = (index) => {
+    if (gameBoard.board[index] === '' && !gameOver) {
+      gameBoard.board[index] = currentPlayer.getSymbol();
+      gameBoard.render();
+      checkWin();
+      checkDraw();
+      if(!gameOver) changePlayer();
+    }
+  };
+
+  return { play };
 })();
 
 squares.forEach((square, index) => {
