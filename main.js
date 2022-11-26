@@ -41,13 +41,34 @@ const game = (() => {
   };
 
   // gameover true if checkWin returns true or checkDraw returns true
+  const checkWin = () => {
+    const winningCombos = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+
+    return winningCombos.some((combo) => {
+      return combo.every((index) => {
+        return gameBoard.board[index] === currentPlayer.getSymbol();
+      });
+    });
+  };
 
   const play = (index) => {
     if (gameBoard.board[index] === '' && !gameOver) {
       gameBoard.board[index] = currentPlayer.getSymbol();
       gameBoard.render();
-      checkWin();
-      checkDraw();
+      if (checkWin()) {
+        playerTurn.textContent = `${currentPlayer.getName()} wins!`;
+        gameOver = true;
+      }
+      // checkDraw();
       if(!gameOver) changePlayer();
     }
   };
@@ -60,6 +81,8 @@ const game = (() => {
 
   return { play, reset };
 })();
+
+// event driven dvelopment
 
 squares.forEach((square, index) => {
   square.addEventListener('click', () => {
