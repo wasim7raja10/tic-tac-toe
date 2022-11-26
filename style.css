@@ -1,3 +1,4 @@
+/* vite setup intial css start */
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -43,11 +44,12 @@ button {
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
-  font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 button:hover {
   border-color: #646cff;
@@ -69,6 +71,7 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+/* vite setup intial css end */
 
 #app {
   height: 100%;
@@ -119,9 +122,4 @@ button:focus-visible {
   justify-content: center;
   align-items: center;
   margin-top: 1em;
-}
-
-.button-container button {
-  text-transform: uppercase;
-  font-weight: 600;
 }
