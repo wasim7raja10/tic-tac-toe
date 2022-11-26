@@ -32,12 +32,15 @@ const gameBoard = (() => {
 
 const game = (() => {
   let currentPlayer = player1;
+  let gameOver = false;
   playerTurn.textContent = `${currentPlayer.getName()}'s turn`;
 
   const changePlayer = () => {
     currentPlayer = currentPlayer === player1 ? player2 : player1;
     playerTurn.textContent = `${currentPlayer.getName()}'s turn`;
   };
+
+  // gameover true if checkWin returns true or checkDraw returns true
 
   const play = (index) => {
     if (gameBoard.board[index] === '' && !gameOver) {
@@ -49,7 +52,13 @@ const game = (() => {
     }
   };
 
-  return { play };
+  const reset = () => {
+    gameOver = false;
+    gameBoard.reset();
+    changePlayer();
+  };
+
+  return { play, reset };
 })();
 
 squares.forEach((square, index) => {
