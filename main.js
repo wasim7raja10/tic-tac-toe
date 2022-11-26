@@ -1,4 +1,4 @@
-const square = Array.from(document.querySelectorAll('.square'));
+const squares = Array.from(document.querySelectorAll('.square'));
 const playerTurn = document.querySelector('.player-turn');
 const resetButton = document.querySelector('.restart');
 
@@ -10,3 +10,23 @@ const playerFactory = (name, symbol) => {
 
 const player1 = playerFactory('Player 1', 'X');
 const player2 = playerFactory('Player 2', 'O');
+
+const gameBoard = (() => {
+  const board = ['', '', '', '', '', '', '', '', ''];
+
+  const render = () => {
+    squares.forEach((square, index) => {
+      square.textContent = board[index];
+    });
+  };
+
+  const reset = () => {
+    board.forEach((_, index) => {
+      board[index] = '';
+    });
+    render();
+  };
+
+  return { board, render, reset };
+}
+)();
