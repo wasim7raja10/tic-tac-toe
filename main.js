@@ -60,6 +60,12 @@ const game = (() => {
     });
   };
 
+  const checkDraw = () => {
+    return gameBoard.board.every((square) => {
+      return square !== '';
+    });
+  };
+
   const play = (index) => {
     if (gameBoard.board[index] === '' && !gameOver) {
       gameBoard.board[index] = currentPlayer.getSymbol();
@@ -68,7 +74,10 @@ const game = (() => {
         playerTurn.textContent = `${currentPlayer.getName()} wins!`;
         gameOver = true;
       }
-      // checkDraw();
+      if (checkDraw()) {
+        playerTurn.textContent = "It's a draw!";
+        gameOver = true;
+      }
       if(!gameOver) changePlayer();
     }
   };
