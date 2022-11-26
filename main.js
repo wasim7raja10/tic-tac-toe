@@ -81,7 +81,7 @@ const game = (() => {
         gameStatus.textContent = "It's a draw!";
         gameOver = true;
       }
-      if(!gameOver) changePlayer();
+      if (!gameOver) changePlayer();
       else {
         verdict.innerHTML = verdictTemplate(gameStatus.textContent);
         document.body.appendChild(verdict);
@@ -90,7 +90,9 @@ const game = (() => {
   };
 
   const reset = () => {
-    document.body.removeChild(verdict);
+    if (document.body.contains(verdict)) {
+      document.body.removeChild(verdict);
+    }
     gameOver = false;
     gameBoard.reset();
     changePlayer();
