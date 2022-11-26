@@ -30,3 +30,15 @@ const gameBoard = (() => {
   return { board, render, reset };
 }
 )();
+
+const game = (() => {
+  let currentPlayer = player1;
+  playerTurn.textContent = `${currentPlayer.getName()}'s turn`;
+
+  const changePlayer = () => {
+    currentPlayer = currentPlayer === player1 ? player2 : player1;
+    playerTurn.textContent = `${currentPlayer.getName()}'s turn`;
+  };
+}
+)();
+
