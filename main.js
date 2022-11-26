@@ -1,5 +1,5 @@
 const squares = Array.from(document.querySelectorAll('.square'));
-const playerTurn = document.querySelector('.player-turn');
+const gameStatus = document.querySelector('.player-turn');
 const resetButton = document.querySelector('.restart');
 
 const playerFactory = (name, symbol) => {
@@ -33,11 +33,11 @@ const gameBoard = (() => {
 const game = (() => {
   let currentPlayer = player1;
   let gameOver = false;
-  playerTurn.textContent = `${currentPlayer.getName()}'s turn`;
+  gameStatus.textContent = `${currentPlayer.getName()}'s turn`;
 
   const changePlayer = () => {
     currentPlayer = currentPlayer === player1 ? player2 : player1;
-    playerTurn.textContent = `${currentPlayer.getName()}'s turn`;
+    gameStatus.textContent = `${currentPlayer.getName()}'s turn`;
   };
 
   // gameover true if checkWin returns true or checkDraw returns true
@@ -71,11 +71,11 @@ const game = (() => {
       gameBoard.board[index] = currentPlayer.getSymbol();
       gameBoard.render();
       if (checkWin()) {
-        playerTurn.textContent = `${currentPlayer.getName()} wins!`;
+        gameStatus.textContent = `${currentPlayer.getName()} wins!`;
         gameOver = true;
       }
       if (checkDraw()) {
-        playerTurn.textContent = "It's a draw!";
+        gameStatus.textContent = "It's a draw!";
         gameOver = true;
       }
       if(!gameOver) changePlayer();
