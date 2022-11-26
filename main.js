@@ -1,5 +1,5 @@
 const squares = Array.from(document.querySelectorAll('.square'));
-const gameStatus = document.querySelector('.player-turn');
+const gameStatus = document.querySelector('.game-status');
 const resetButton = document.querySelector('.restart');
 
 const playerFactory = (name, symbol) => {
