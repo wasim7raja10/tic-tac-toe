@@ -108,8 +108,7 @@ squares.forEach((square, index) => {
   square.addEventListener('click', () => {
     game.play(index);
   });
-}
-);
+});
 
 resetButton.addEventListener('click', () => {
   game.reset();
