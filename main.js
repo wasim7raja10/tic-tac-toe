@@ -77,12 +77,12 @@ const game = (() => {
         gameStatus.textContent = `${currentPlayer.getName()} win!`;
         gameOver = true;
       }
-      if (checkDraw()) {
+      else if (checkDraw()) {
         gameStatus.textContent = "It's a draw!";
         gameOver = true;
       }
-      if (!gameOver) changePlayer();
-      else {
+      else changePlayer();
+      if (gameOver) {
         verdict.innerHTML = verdictTemplate(gameStatus.textContent);
         document.body.appendChild(verdict);
         gameStatus.textContent = '';
