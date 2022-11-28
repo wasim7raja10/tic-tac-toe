@@ -1,37 +1,12 @@
 import verdictTemplate from './components/Verdict.js';
-
-const squares = Array.from(document.querySelectorAll('.square'));
-const gameStatus = document.querySelector('.game-status');
-const resetButton = document.querySelector('.restart');
-const verdict = document.createElement('div');
-
-const playerFactory = (name, symbol) => {
-  const getName = () => name;
-  const getSymbol = () => symbol;
-  return { getName, getSymbol };
-}
+import { squares, gameStatus, resetButton, verdict } from './helper/Selectors.js';
+import playerFactory from './factory-functions/Player.js';
+import gameBoardFactory from './factory-functions/GameBoard.js';
 
 const player1 = playerFactory('Player 1', 'X');
 const player2 = playerFactory('Player 2', 'O');
 
-const gameBoard = (() => {
-  const board = ['', '', '', '', '', '', '', '', ''];
-
-  const render = () => {
-    squares.forEach((square, index) => {
-      square.textContent = board[index];
-    });
-  };
-
-  const reset = () => {
-    board.forEach((_, index) => {
-      board[index] = '';
-    });
-    render();
-  };
-
-  return { board, render, reset };
-})();
+const gameBoard = gameBoardFactory();
 
 const game = (() => {
   let currentPlayer = player1;
