@@ -119,7 +119,7 @@ button:focus-visible {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.9);
   z-index: 10;
   display: flex;
   justify-content: center;
@@ -134,4 +134,9 @@ button:focus-visible {
   align-items: center;
   gap: 2rem;
   color: white;
+}
+
+.game-over h1 {
+  font-size: 3rem;
+  font-weight: 700;
 }

@@ -36,11 +36,11 @@ const gameBoard = (() => {
 const game = (() => {
   let currentPlayer = player1;
   let gameOver = false;
-  gameStatus.textContent = `${currentPlayer.getName()}'s turn`;
+  gameStatus.textContent = `${currentPlayer.getName()}'s turn - ${currentPlayer.getSymbol()}`;
 
   const changePlayer = () => {
     currentPlayer = currentPlayer === player1 ? player2 : player1;
-    gameStatus.textContent = `${currentPlayer.getName()}'s turn`;
+    gameStatus.textContent = `${currentPlayer.getName()}'s turn - ${currentPlayer.getSymbol()}`;
   };
 
   // gameover true if checkWin returns true or checkDraw returns true
